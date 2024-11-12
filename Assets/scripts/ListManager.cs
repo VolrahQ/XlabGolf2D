@@ -1,18 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using System;
+using Unity.VisualScripting;
 
 public class ListSpawner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int TaskPrice;
+    private bool Task;
+    private int TaskModifer;
+    private MoneyManager moneyManager;
+    public GameObject list;
+    
+    private void TaskPriceSwitch()
+    {
+        switch (DataManager.taskLevel)
+        {
+            case 1: TaskPrice = 5; break;
+            case 2: TaskPrice = 10; break;
+            case 3: TaskPrice = 20; break;
+            case 4: TaskPrice = 30; break;
+        }
+    }
+    private void TskSwitch()
+    {
+        switch (DataManager.tableLevel)
+        {
+            case 1: TaskModifer = 5; break;
+            case 2: TaskModifer = 10; break;
+            case 3: TaskModifer = 20; break;
+            case 4: TaskModifer = 30; break;
+        }
+    }
+   public void ListSpawn()
+    {
+        if (Task != true)
+        {
+            Task = true;
+            TaskPriceSwitch();
+            if (TaskPrice >= DataManager.money)
+            {
+                moneyManager.RemoveMoney(TaskPrice);
+            }
+        }
+    }
+    public void ListSell()
+    {
+        if (Task)
+        {
+            if (TaskPrice >= 0)
+            {
+                moneyManager.AddMoney(TaskPrice);
+            }
+        }
+    }
+    public void ListTask()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
+    

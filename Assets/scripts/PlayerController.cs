@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private ListSpawner spawner = new ListSpawner();
+    public void BuyTaskButton()
     {
-        
+        spawner.ListSpawn();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SellTaskButton()
     {
-        
+        spawner.ListSell();
+    }
+    public void AddTaskButton()
+    {
+        spawner.ListTask();
     }
 }
