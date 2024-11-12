@@ -12,7 +12,7 @@ public class MoneyManager : MonoBehaviour
     public void RemoveMoney(int item)
     {
         DataManager.money -= item;
-        DataManager.Load();
+        DataManager.Save();
     }
 
 }

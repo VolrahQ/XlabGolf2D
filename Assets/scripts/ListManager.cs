@@ -8,11 +8,11 @@ using Unity.VisualScripting;
 public class ListSpawner : MonoBehaviour
 {
     private int TaskPrice;
-    private bool Task;
+    private bool Task = false;
     private int TaskModifer;
-    private MoneyManager moneyManager;
+    public MoneyManager moneyManager;
     public GameObject list;
-    
+
     private void TaskPriceSwitch()
     {
         switch (DataManager.taskLevel)
@@ -35,11 +35,11 @@ public class ListSpawner : MonoBehaviour
     }
    public void ListSpawn()
     {
-        if (Task != true)
+        if (Task == false)
         {
             Task = true;
             TaskPriceSwitch();
-            if (TaskPrice >= DataManager.money)
+            if (TaskPrice > DataManager.money)
             {
                 moneyManager.RemoveMoney(TaskPrice);
             }
@@ -53,6 +53,7 @@ public class ListSpawner : MonoBehaviour
             {
                 moneyManager.AddMoney(TaskPrice);
             }
+            Task = false;
         }
     }
     public void ListTask()

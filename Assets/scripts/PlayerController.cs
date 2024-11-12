@@ -7,7 +7,11 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    private ListSpawner spawner = new ListSpawner();
+    private ListSpawner spawner;
+    private void Start()
+    {
+        spawner = GetComponent<ListSpawner>();
+    }
     public void BuyTaskButton()
     {
         spawner.ListSpawn();
