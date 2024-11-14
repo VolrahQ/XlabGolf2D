@@ -1,15 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance { get; private set; }
 
-
     // Событие для обновления UI
-    public delegate void OnMoneyChanged(int currentMoney);
-    public event OnMoneyChanged MoneyChanged;
+    public delegate void OnMoneyChangedHandler(int currentMoney);
+    public event OnMoneyChangedHandler MoneyChanged;
 
     private void Awake()
     {
@@ -24,27 +20,27 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public void AddMoney(int amount)
+    public void AddFunds(int amount)
     {
         if (amount > 0)
         {
             DataManager.money += amount;
-            MoneyChanged?.Invoke(DataManager.money);
+            MoneyChanged?.Invoke((int)DataManager.money);
         }
     }
 
-    public bool SpendMoney(int amount)
+    public bool TrySpendMoney(int amount)
     {
         if (amount > 0 && DataManager.money >= amount)
         {
             DataManager.money -= amount;
-            MoneyChanged?.Invoke(DataManager.money);
+            MoneyChanged?.Invoke((int)DataManager.money);
             return true;
         }
         return false;
     }
 
-    public bool CanAfford(int amount)
+    public bool HasEnoughMoney(int amount)
     {
         return DataManager.money >= amount;
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static int money;
+    public static double money;
     public static int tableLevel;
     public static int taskLevel;
     public static string savePath;
@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour
 }
 public class GameData
 {
-    public int money;
+    public double money;
     public int tableLevel;
     public int taskLevel;
 }
