@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    public static double money;
+    public static int money;
     public static int tableLevel;
     public static int taskLevel;
     public static string savePath;
@@ -32,7 +32,7 @@ public class DataManager : MonoBehaviour
             taskLevel = data.taskLevel;
         }
     else {
-            money = 10;
+            money = 200;
             tableLevel = 1; 
             taskLevel = 1;
          }
@@ -40,7 +40,7 @@ public class DataManager : MonoBehaviour
 }
 public class GameData
 {
-    public double money;
+    public int money;
     public int tableLevel;
     public int taskLevel;
 }

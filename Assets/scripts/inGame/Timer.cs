@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    public float updateInterval = 5f; // Интервал обновления в секундах
+    public float updateInterval = 0.5f;
 
     private bool isTimerRunning = true;
     public event System.Action OnTimerChanged;
@@ -21,6 +21,7 @@ public class Timer : MonoBehaviour
             yield return new WaitForSeconds(updateInterval);
             OnTimerChanged?.Invoke();
             Debug.Log("Timer updated");
+            MoneyManager.Instance.TrySpendMoney(100);
         }
     }
 

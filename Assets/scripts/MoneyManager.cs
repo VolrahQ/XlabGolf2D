@@ -3,7 +3,6 @@ public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance { get; private set; }
 
-    // Событие для обновления UI
     public delegate void OnMoneyChangedHandler(int currentMoney);
     public event OnMoneyChangedHandler MoneyChanged;
 
@@ -26,6 +25,7 @@ public class MoneyManager : MonoBehaviour
         {
             DataManager.money += amount;
             MoneyChanged?.Invoke((int)DataManager.money);
+            DataManager.Save();
         }
     }
 
@@ -35,6 +35,7 @@ public class MoneyManager : MonoBehaviour
         {
             DataManager.money -= amount;
             MoneyChanged?.Invoke((int)DataManager.money);
+            DataManager.Save();
             return true;
         }
         return false;
