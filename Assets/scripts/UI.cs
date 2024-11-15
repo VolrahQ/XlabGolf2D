@@ -3,7 +3,9 @@ using TMPro;
 
 public class UI : MonoBehaviour
 {
-    public TextMeshProUGUI TextMeshPro;
+    public TextMeshProUGUI TextMeshPro1;
+    public TextMeshProUGUI TextMeshPro2;
+    public TextMeshProUGUI TextMeshPro3;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +15,8 @@ public class UI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TextMeshPro.text = "Money: " + DataManager.money;
+        TextMeshPro1.text = "Money: " + DataManager.money;
+        TextMeshPro2.text = "TableLVL: " + DataManager.tableLevel;
+        TextMeshPro3.text = "TskLVL: " + DataManager.taskLevel;
     }
 }
