@@ -12,7 +12,7 @@ public class menu : MonoBehaviour
     
     public string gameSceneName = "inGame";
 
-    void Start()
+    private void Start()
     {
         
         startButton.onClick.AddListener(OnStartButtonClicked);
@@ -21,27 +21,22 @@ public class menu : MonoBehaviour
     }
 
     
-    void OnStartButtonClicked()
+    public void OnStartButtonClicked()
     {
         
         SceneManager.LoadScene(gameSceneName);
     }
 
     
-    void OnSettingsButtonClicked()
+    public void OnSettingsButtonClicked()
     {
        
         Debug.Log("���������");
     }
 
     
-    void OnQuitButtonClicked()
+    public void OnQuitButtonClicked()
     {
-    
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
             Application.Quit();
-#endif
     }
 }
