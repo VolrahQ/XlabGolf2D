@@ -6,14 +6,14 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
+    public AudioSource _audiosSource;
     public int ClickToTable;
     public bool TableActive = false;
     private Image _image;
     
     public void MainTableClick()
     {
-        MoneyManager.Instance.AddFunds(DataManager.taskLevel*2);
-        //MoneyManager.Instance.TrySpendMoney(DataManager.tableLevel / 2);
+        MoneyManager.Instance.AddFunds(DataManager.taskLevel*5);
         if (TableActive == true)
         {
         ClickToTable++;
@@ -39,32 +39,33 @@ public class LevelManager : MonoBehaviour
     {
         if (DataManager.money <= 100)
         {
+            _audiosSource.Play();
             DataManager.money = 200;
             DataManager.tableLevel = 1;
             DataManager.taskLevel = 1;
             DataManager.Save();
             SceneManager.LoadScene("Menu");
         }
-        // Проверяем условие
+        
         if (TableActive)
         {
-            ShowImage(); // Включить изображение
+            ShowImage(); 
         }
         else
         {
-            HideImage(); // Выключить изображение
+            HideImage(); 
         }
 
     }
     public Image targetImage;
 
-    // Переменная для хранения текущего состояния (включено/выключено)
+   
     private bool isVisible = true;
 
-    // Пример условия (можно заменить на своё)
+    
     public bool someCondition = false;
 
-    // Метод для включения изображения
+    
     public void ShowImage()
     {
         if (targetImage != null)
@@ -74,7 +75,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Метод для отключения изображения
+    
     public void HideImage()
     {
         if (targetImage != null)
@@ -84,7 +85,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Метод для переключения состояния изображения
+    
     public void ToggleImage()
     {
         if (targetImage != null)
